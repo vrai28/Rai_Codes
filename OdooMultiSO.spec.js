@@ -15,7 +15,7 @@ test.only('Multi Sales Order Confirmation',async ({browser,page})=>
          algorithm: "SHA1",
          digits: 6,
          period: 30,
-         secret: process.env.ODOO_SECRET //gkwzqx5y5ru5xz36s3gq73vaa7nrrbdd
+         secret: process.env.ODOO_SECRET 
        });
    const AccountUserName = page.locator('#identifierId');
    const AccountPasswordValue = page.locator("input[type='password']");
@@ -23,7 +23,7 @@ test.only('Multi Sales Order Confirmation',async ({browser,page})=>
    const OdooPasswordValue = page.locator("[type='password']");
   //const context = await browser.newContext();
   //const page = await context.newPage ();
-   await page.goto("https://erp-staging.everphone.app/web/login");
+   await page.goto("");
    console.log(await page.title());
    await expect(page).toHaveTitle("Sign in - Google Accounts");
    await AccountUserName.fill(process.env.ODOO_EMAIL);
@@ -35,7 +35,7 @@ test.only('Multi Sales Order Confirmation',async ({browser,page})=>
    let token = totp.generate();
    await page.getByLabel('Enter code').fill(token);
    await page.locator("text='Next'").click();
-   await page.waitForURL('https://erp-staging.everphone.app/web/login');
+   await page.waitForURL('');
    await OdooUserName.fill(process.env.ODOO_EMAIL);
    await OdooPasswordValue.fill(process.env.ODOO_PASSWORD);
    await page.locator("text='Log in'").click();
